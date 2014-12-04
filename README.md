@@ -1,14 +1,14 @@
 practicas3-4-DAI
 ================
 
-Prácticas 3 y 4 de la asignatura Desarrollo de Aplicaciones Web (DAI) de la [ETSIIT, Granada](http://etsiit.ugr.es/)).
+Prácticas 3 y 4 de la asignatura Desarrollo de Aplicaciones Web (DAI) de la [ETSIIT, Granada](http://etsiit.ugr.es/).
 
 ***
 
 Contendrá los contenidos de las prácticas 3:
 
 * Formularios “Avanzados”
-* Plantillas (co mako)
+* Plantillas (con mako)
 * Manejo de Sesiones
 * Persistencia Sencilla: dbm
 * Persistencia NO-SQL: MongoDB
