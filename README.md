@@ -21,8 +21,11 @@ y de la práctica 4:
 * Integración sencilla de Twitter
 * Python Twitter: [Tweepy](http://pythonhosted.org/tweepy/html/)
 * "Mashup" (aplicación web híbrida)
+* Uso de jQuery y AJAX
 
+***
 
+Para usar esta apliacación web usaré el framework web para Python [web.py](http://webpy.org/). Para ello hay que ejecutar en consola `python practica3-4.py` y se podrá ver en http://0.0.0.0:8080/periodico/
 
 ***
 

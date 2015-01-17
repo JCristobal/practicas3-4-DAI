@@ -1,0 +1,35 @@
+# encoding: utf-8
+<html>
+  <head>
+    <title>Mi pagina</title>
+	 <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+	 <meta charset="UTF-8">
+  </head>
+	<body>
+
+		<form name="input" action="/rss" method="post">
+
+			<h2> Noticias RSS </h2>
+			
+			<% long = len(mirss['entries']) %> 
+			<p> Hay un total de ${long} entradas del RSS </p>
+
+			<ul> 
+				% for i in mirss.entries:
+					<li> <strong> <a href=${i.link}>  ${i.title} </a></strong> </li> 
+				% endfor
+			</ul>
+
+<!--  
+				 for i in mirss.entries:
+					 if mirss.entries.find(Alaya) != -1:            
+						<li> ${i.title} </li> 
+					 endif
+				 endfor
+-->
+		<a href="../periodico/">  Vuelve a portada</a>
+		</form>
+
+	</body>
+
+</html>

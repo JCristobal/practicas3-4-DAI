@@ -1,0 +1,83 @@
+# encoding: utf-8
+<html>
+  <head>
+    <title>Mi pagina</title>
+   <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+   <meta charset="UTF-8">
+
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCnWLSJ_mkOwQht4Z6_cVHWgO86xgzS30Q&sensor=true">
+    </script>
+
+  </head>
+  <body>
+
+    <form name="input" action="/rss" method="post">
+
+      <% tw = mitweet[0] %> 
+
+      <h2> Busqueda en Tweeter </h2>
+      
+      <h3> Primer  Tweet con tu palabra: ${mipalabra}  </h3>
+      <h4>  ${tw.text} </h4>
+      <p> <strong> Autor del tweet:  ${ tw.author.name} </strong> </p> 
+      <p>  con identificador  ${ tw.id}  </p> 
+      <p>   Creado: ${ tw.created_at}    </p> 
+
+      <%  
+      if str(tw.geo)  != "None":
+        nulo,nulo,nulo,latitud,longitud = str(tw.geo).split()
+        latitud = latitud.strip('[,')
+        longitud = longitud.strip(']}')
+      %>
+
+      % if str(tw.geo)  != "None":
+        <p> Con coordenadas: </p>
+        <ul>  
+          <li> Latitud:  ${latitud} </li>
+          <li>  Longitud:  ${longitud} </li>
+        </ul>
+
+       <script type="text/javascript">
+                function initialize() {
+                  var latitud = ${latitud};
+                  var longitud = ${longitud}; 
+
+                  var mapOptions = {center: new google.maps.LatLng(latitud,longitud), zoom: 18, disableDefaultUI: true};
+                  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+            var myLatlng = new google.maps.LatLng(latitud,longitud);
+
+            var informacionAvanzada = new google.maps.InfoWindow({
+              content: 'Tweet en: Latitud: '+ latitud + ' y Longitud: '+ longitud
+            });
+
+            var marcador = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title: 'Localizacion del tweet'
+            });
+
+            google.maps.event.addListener(marcador, 'click', function() {
+              informacionAvanzada.open(map,marcador);
+            });
+
+
+                  }
+                google.maps.event.addDomListener(window, 'load', initialize);
+      </script>
+      <p> Lo localizamos en el mapa: </p>
+      <div onload="initialize()" id="map-canvas" style="width:50%; height:50%"></div>
+
+      % else:
+         <p> Y no tiene coordenadas  </p>   
+      % endif 
+
+
+
+    <a href="../periodico/">  Vuelve a portada</a>
+    </form>
+
+  </body>
+
+</html> 

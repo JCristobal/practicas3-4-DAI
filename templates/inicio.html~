@@ -1,0 +1,230 @@
+
+<html>
+  <head>
+    <title>Mi pagina</title>
+	 <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+	 <meta charset="UTF-8">
+
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	 <script>
+        $(document).ready(function () {
+         
+            $('#centro').hover(function () {
+                $(this).animate({ opacity: 0.4}, 400)
+            }, function () {
+                $(this).animate({ opacity: 1.0}, 400)
+            });              
+        });
+     </script>
+
+
+  </head>
+  
+  <body>
+		<header>
+			
+			<section id="cabecera">
+				<h3>A la sombra del olivo</h3>    
+				<p> P&aacute;gina temporal para DAI </p>    
+				<p>Bienvenido ${nombre}    </p>  
+				<a href="https://twitter.com/share" class="twitter-share-button" data-text="Acabo de visitar esta web ">Tweetea tu visita</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+				  <form name="formulario" action="validar.php" method="post" onSubmit=" return validarCampos(this)">
+				        <fieldset>
+				            <legend>Identificaci&oacute;n</legend>
+				            
+				            <a href="../logea">&iexcl;Logueate aqu&iacute;!</a>
+					    <a href="../periodico/">Logout</a>
+				        </fieldset>
+				    </form>
+			</section>
+
+		</header>
+
+
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCnWLSJ_mkOwQht4Z6_cVHWgO86xgzS30Q&sensor=true">
+    </script>
+      <script type="text/javascript">
+          var latitud = 37.196787799999996; 
+          var longitud = -3.6248942
+
+          function initialize() {
+          var mapOptions = {center: new google.maps.LatLng(37.1904066,-3.620416), zoom: 19, disableDefaultUI: true};
+          var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+          // Geolocalización HTML5
+          if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+
+            latitud = position.coords.latitude;
+            longitud = position.coords.longitude;
+
+            document.getElementById("demo").innerHTML = latitud;
+            document.getElementById("demo2").innerHTML = longitud;
+
+            var myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+
+            var informacionAvanzada = new google.maps.InfoWindow({
+              content: 'Latitud: '+ position.coords.latitude + ' y Longitud: '+ position.coords.longitude
+            });
+
+            var marcador = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title: 'Localizacion actual'
+            });
+
+            google.maps.event.addListener(marcador, 'click', function() {
+              informacionAvanzada.open(map,marcador);
+            });
+
+            map.setCenter(myLatlng);
+
+            }, function() { handleNoGeolocation(true);
+            });
+          } 
+            else {
+              // Navegador no soporta geolocalización
+              handleNoGeolocation(false);
+            }
+
+
+
+          }
+
+
+          function handleNoGeolocation(errorFlag) {
+              if (errorFlag) {
+                var content = 'Error: El servicio de geolocalización falló.';
+              } else {
+                var content = 'Error: Tu navegador no soporta geolocalización.';
+              }
+              var options = {
+                map: map,
+                position: new google.maps.LatLng(60, 105),
+                content: content
+              };
+              var informacionAvanzada = new google.maps.InfoWindow(options);
+              map.setCenter(options.position);
+          }
+
+          function devuelve_lat() {
+              return latitud ;
+          }
+          function devuelve_long() {
+              return  longitud;
+          }
+    
+          google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+
+		<section id="izquierda"  onload="initialize()" >
+		<!--<section id="izquierda" style=" background-color: orange; text-align:center">  -->
+			<p><a href="../rss">RSS</a>	</p>
+			<!--  <p><a href="../buscadorRSS">Buscador RSS</a>	</p>    -->
+			<p> -----  </p>
+			<p><a href="../graficas">  Gráficas </a>	  </p>
+			<p> -----  </p>
+			<p><a href="../mapas">  Google Maps</a>	  </p>
+			<p><a href="../buscamaps">  Busca con unas coordenadas en Google Maps</a>	  </p>
+			<p> -----  </p>
+			<p><a href="../buscatweet">  Busqueda en Twitter de una palabra (con geolocalización)</a>	  </p>
+			<p> -----  </p>
+
+			<p>  Tuitea tu posición: </a>	  
+		    <script>
+		      document.write("<a id=\"menu\" href=\"https://twitter.com/share\" data-size=\"large\" class=\"twitter-share-button\" data-text=\"Me encuentro en la latitud: "+devuelve_lat()+" y longitud: "+devuelve_long()+" twiteando desde la pagina: \" >Tweetea tu posicion</a>");
+		    </script>
+		    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+			</p>
+			
+			<p><a href="../tweetposicion">  O mira el mapa y tuitea tu posicion</a>	  </p>
+			<p> -----  </p>
+
+
+
+
+
+
+		</section>
+		<section id="centro">
+
+				  <form name="formulario" action="validar.php" method="post" onSubmit=" return validarCampos(this)">
+				        <fieldset>
+				            <legend>Persistencia sencilla</legend>
+				            <p><a href="../cuestionario"> Reg&iacute;strate</a></p>
+				            <a href="../accederDBM">Login</a>
+					    <a href="../periodico/">Logout</a>
+					    <p><a href="../muestradatosDBM/${nombre}">Mis datos</a></p>
+					    <p><a href="../cambiadatosDBM/${nombre}">cambiar mis datos</a></p>
+				        </fieldset>
+				    </form>
+
+					<form name="formulario"  method="post" onSubmit=" return validarCampos(this)">
+				        <fieldset>
+				            <legend>Persistencia NO-SQL: MongoDB</legend>
+				            
+				            <p><a href="../registro">&iexcl;REG&Iacute;STRATE aqu&iacute;!</a></p>
+					    <p><a href="../acceder">Login</a></p>
+					    <p><a href="../salir">Logout</a></p>
+				            <p><a href="../muestradatos/${nombre}">Mis datos</a></p>
+					    <p><a href="../cambiadatos/${nombre}">cambiar mis datos</a></p>
+				        </fieldset>
+				    </form>
+
+
+		</section>
+
+		<script>
+	        $(document).ready(function () {
+	         
+	            $('#oculta').click(function () {
+	                $(favs).hide();
+	            });
+	            $('#muestra').click(function () {
+	                $(favs).show();
+	            });
+
+	                 
+	        });
+        </script>
+
+		<section id="derecha" >
+			<!-- <img id="imagen_perro" src = "/static/imagenes/perro.jpg"  alt = "perro" />-->
+			<a id="timeline" class="twitter-timeline"  href="https://twitter.com/Tobillas92" data-widget-id="540556874811445248">Tweets by @Tobillas92</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+            <div id="favs">
+            <button id="oculta"> Ocultar favoritos </button>
+            
+	        <a  class="twitter-timeline"  href="https://twitter.com/Tobillas92/favorites" data-widget-id="548537996853927936">Favorite Tweets by @Tobillas92</a>
+	        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	        </div>
+			<button id="muestra"> Mostrar favoritos </button>
+	         
+          	
+          
+          
+		</section>
+		<footer>
+			
+			<section id="contacto">
+					
+					<p>Jos&eacute; Crist&oacute;bal L&oacute;pez Zafra  --- <a href="mailto:cristoballopez@correo.ugr.es">Correo de contacto</a> </br>
+					<address>Calle Mart&iacute;n Bolivar, n&uacute;mero 2, 3B</address></br>         
+					<a href="../cuestionario"> Registrate</a>
+			</section>  
+		</footer>
+		 <!--<img id="imagen1" src = "/static/imagenes/goku.png"  alt = "Imagen" /> -->
+		
+	</body>
+</html>
+
+
+

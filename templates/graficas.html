@@ -1,0 +1,550 @@
+# encoding: utf-8
+<html>
+  <head>
+    <title>Mi pagina</title>
+	 <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+	 <meta charset="UTF-8">
+
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	 <script src="http://code.highcharts.com/highcharts.js"></script>
+
+
+	 <script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/modules/data.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+	<!-- Additional files for the Highslide popup effect -->
+	<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>
+	<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />
+
+       <script>
+        $(document).ready(function () {
+         
+            $('#container0').dblclick(function () {
+				    // Get the CSV and create the chart
+				    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
+
+				        $('#container0').highcharts({
+
+				            data: {
+				                csv: csv
+				            },
+
+				            title: {
+				                text: 'Visitas diarias a www.highcharts.com'
+				            },
+
+				            subtitle: {
+				                text: 'Source: Google Analytics  ----  Doble click para recargar '
+				            },
+
+				            xAxis: {
+				                tickInterval: 7 * 24 * 3600 * 1000, // one week
+				                tickWidth: 0,
+				                gridLineWidth: 1,
+				                labels: {
+				                    align: 'left',
+				                    x: 3,
+				                    y: -3
+				                }
+				            },
+
+				            yAxis: [{ // left y axis
+				                title: {
+				                    text: null
+				                },
+				                labels: {
+				                    align: 'left',
+				                    x: 3,
+				                    y: 16,
+				                    format: '{value:.,0f}'
+				                },
+				                showFirstLabel: false
+				            }, { // right y axis
+				                linkedTo: 0,
+				                gridLineWidth: 0,
+				                opposite: true,
+				                title: {
+				                    text: null
+				                },
+				                labels: {
+				                    align: 'right',
+				                    x: -3,
+				                    y: 16,
+				                    format: '{value:.,0f}'
+				                },
+				                showFirstLabel: false
+				            }],
+
+				            legend: {
+				                align: 'left',
+				                verticalAlign: 'top',
+				                y: 20,
+				                floating: true,
+				                borderWidth: 0
+				            },
+
+				            tooltip: {
+				                shared: true,
+				                crosshairs: true
+				            },
+
+				            plotOptions: {
+				                series: {
+				                    cursor: 'pointer',
+				                    point: {
+				                        events: {
+				                            click: function (e) {
+				                                hs.htmlExpand(null, {
+				                                    pageOrigin: {
+				                                        x: e.pageX || e.clientX,
+				                                        y: e.pageY || e.clientY
+				                                    },
+				                                    headingText: this.series.name,
+				                                    maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x) + ':<br/> ' +
+				                                        this.y + ' visits',
+				                                    width: 200
+				                                });
+				                            }
+				                        }
+				                    },
+				                    marker: {
+				                        lineWidth: 1
+				                    }
+				                }
+				            },
+
+				            series: [{
+				                name: 'All visits',
+				                lineWidth: 4,
+				                marker: {
+				                    radius: 4
+				                }
+				            }, {
+				                name: 'New visitors'
+				            }]
+				        });
+
+				    });
+
+
+            });
+                 
+        });
+        </script>
+
+
+
+<script>
+$(function () {
+
+    // Get the CSV and create the chart
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
+
+        $('#container0').highcharts({
+
+            data: {
+                csv: csv
+            },
+
+            title: {
+                text: 'Visitas diarias a www.highcharts.com'
+            },
+
+            subtitle: {
+                text: 'Source: Google Analytics  ----  Doble click para recargar '
+            },
+
+            xAxis: {
+                tickInterval: 7 * 24 * 3600 * 1000, // one week
+                tickWidth: 0,
+                gridLineWidth: 1,
+                labels: {
+                    align: 'left',
+                    x: 3,
+                    y: -3
+                }
+            },
+
+            yAxis: [{ // left y axis
+                title: {
+                    text: null
+                },
+                labels: {
+                    align: 'left',
+                    x: 3,
+                    y: 16,
+                    format: '{value:.,0f}'
+                },
+                showFirstLabel: false
+            }, { // right y axis
+                linkedTo: 0,
+                gridLineWidth: 0,
+                opposite: true,
+                title: {
+                    text: null
+                },
+                labels: {
+                    align: 'right',
+                    x: -3,
+                    y: 16,
+                    format: '{value:.,0f}'
+                },
+                showFirstLabel: false
+            }],
+
+            legend: {
+                align: 'left',
+                verticalAlign: 'top',
+                y: 20,
+                floating: true,
+                borderWidth: 0
+            },
+
+            tooltip: {
+                shared: true,
+                crosshairs: true
+            },
+
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function (e) {
+                                hs.htmlExpand(null, {
+                                    pageOrigin: {
+                                        x: e.pageX || e.clientX,
+                                        y: e.pageY || e.clientY
+                                    },
+                                    headingText: this.series.name,
+                                    maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x) + ':<br/> ' +
+                                        this.y + ' visits',
+                                    width: 200
+                                });
+                            }
+                        }
+                    },
+                    marker: {
+                        lineWidth: 1
+                    }
+                }
+            },
+
+            series: [{
+                name: 'All visits',
+                lineWidth: 4,
+                marker: {
+                    radius: 4
+                }
+            }, {
+                name: 'New visitors'
+            }]
+        });
+
+    });
+
+});
+</script>
+
+
+
+
+
+
+  </head>
+	<body>
+
+		<form name="input" action="/rss" method="post">
+
+			<h2> Gráficas con Highcharts </h2>
+			
+
+			<p> Datos introducidos:</p>
+			<ul> 
+
+				% for i in milista:
+					 <strong>  ${i} </a></strong> 
+				% endfor
+			</ul>
+
+
+	<script> 
+			$(function () { 
+			    $('#container').highcharts({
+			        chart: {
+			            type: 'bar'
+			        },
+			        title: {
+			            text: 'Datos: '
+			        },
+			        xAxis: {
+			            categories: ['Mozilla', 'Internet Explorer', 'Chrome']
+			        },
+			        yAxis: {
+			            title: {
+			                text: 'Valor'
+			            }
+			        },
+			        series: [{
+			            name: 'Valor',
+			            data: [${milista[0]}, ${milista[1]}, ${milista[2]}]
+			        }]
+			    });
+			});
+		</script>
+		<script>
+			$(function () {
+			    $('#container2').highcharts({
+			        title: {
+			            text: 'Monthly Average Temperature',
+			            x: -20 //center
+			        },
+			        subtitle: {
+			            text: 'Source: WorldClimate.com',
+			            x: -20
+			        },
+			        xAxis: {
+			            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+			                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+			        },
+			        yAxis: {
+			            title: {
+			                text: 'Temperature (°C)'
+			            },
+			            plotLines: [{
+			                value: 0,
+			                width: 1,
+			                color: '#808080'
+			            }]
+			        },
+			        tooltip: {
+			            valueSuffix: '°C'
+			        },
+			        legend: {
+			            layout: 'vertical',
+			            align: 'right',
+			            verticalAlign: 'middle',
+			            borderWidth: 0
+			        },
+			        series: [{
+			            name: 'Tokyo',
+			            data: [7.0, ${milista[0]}, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+			        }, {
+			            name: 'New York',
+			            data: [-0.2, ${milista[1]}, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+			        }, {
+			            name: 'Berlin',
+			            data: [-0.9, ${milista[2]}, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+			        }, {
+			            name: 'London',
+			            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+			        }]
+			    });
+			});
+		</script>
+
+		<script>
+			$(function () {
+			    $('#container3').highcharts({
+			        chart: {
+			            plotBackgroundColor: null,
+			            plotBorderWidth: 1,//null,
+			            plotShadow: false
+			        },
+			        title: {
+			            text: 'Grafico con los datos introducidos'
+			        },
+			        tooltip: {
+			            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+			        },
+			        plotOptions: {
+			            pie: {
+			                allowPointSelect: true,
+			                cursor: 'pointer',
+			                dataLabels: {
+			                    enabled: true,
+			                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+			                    style: {
+			                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+			                    }
+			                }
+			            }
+			        },
+			        series: [{
+			            type: 'pie',
+			            name: 'Browser share',
+			            data: [
+			                ['Firefox',   ${milista[0]}],
+			                ['IE',       ${milista[1]}],
+			                {
+			                    name: 'Chrome',
+			                    y: ${milista[2]},
+			                    sliced: true,
+			                    selected: true
+			                },
+
+			            ]
+			        }]
+			    });
+			});
+
+		</script>
+
+
+
+
+
+		<script>
+			$(function () {
+
+			    var colors = Highcharts.getOptions().colors,
+			        categories = ['MSIE', 'Firefox', 'Chrome', 'Safari', 'Opera'],
+			        data = [{
+			            y: 55.11,
+			            color: colors[0],
+			            drilldown: {
+			                name: 'MSIE versions',
+			                categories: ['MSIE 6.0', 'MSIE 7.0', 'MSIE 8.0', 'MSIE 9.0'],
+			                data: [10.85, 7.35, 33.06, 2.81],
+			                color: colors[0]
+			            }
+			        }, {
+			            y: 21.63,
+			            color: colors[1],
+			            drilldown: {
+			                name: 'Firefox versions',
+			                categories: ['Firefox 2.0', 'Firefox 3.0', 'Firefox 3.5', 'Firefox 3.6', 'Firefox 4.0'],
+			                data: [0.20, 0.83, 1.58, 13.12, 5.43],
+			                color: colors[1]
+			            }
+			        }, {
+			            y: 11.94,
+			            color: colors[2],
+			            drilldown: {
+			                name: 'Chrome versions',
+			                categories: ['Chrome 5.0', 'Chrome 6.0', 'Chrome 7.0', 'Chrome 8.0', 'Chrome 9.0',
+			                    'Chrome 10.0', 'Chrome 11.0', 'Chrome 12.0'],
+			                data: [0.12, 0.19, 0.12, 0.36, 0.32, 9.91, 0.50, 0.22],
+			                color: colors[2]
+			            }
+			        }, {
+			            y: 7.15,
+			            color: colors[3],
+			            drilldown: {
+			                name: 'Safari versions',
+			                categories: ['Safari 5.0', 'Safari 4.0', 'Safari Win 5.0', 'Safari 4.1', 'Safari/Maxthon',
+			                    'Safari 3.1', 'Safari 4.1'],
+			                data: [4.55, 1.42, 0.23, 0.21, 0.20, 0.19, 0.14],
+			                color: colors[3]
+			            }
+			        }, {
+			            y: 2.14,
+			            color: colors[4],
+			            drilldown: {
+			                name: 'Opera versions',
+			                categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+			                data: [ 0.12, 0.37, 1.65],
+			                color: colors[4]
+			            }
+			        }],
+			        browserData = [],
+			        versionsData = [],
+			        i,
+			        j,
+			        dataLen = data.length,
+			        drillDataLen,
+			        brightness;
+
+
+			    // Build the data arrays
+			    for (i = 0; i < dataLen; i += 1) {
+
+			        // add browser data
+			        browserData.push({
+			            name: categories[i],
+			            y: data[i].y,
+			            color: data[i].color
+			        });
+
+			        // add version data
+			        drillDataLen = data[i].drilldown.data.length;
+			        for (j = 0; j < drillDataLen; j += 1) {
+			            brightness = 0.2 - (j / drillDataLen) / 5;
+			            versionsData.push({
+			                name: data[i].drilldown.categories[j],
+			                y: data[i].drilldown.data[j],
+			                color: Highcharts.Color(data[i].color).brighten(brightness).get()
+			            });
+			        }
+			    }
+
+			    // Create the chart
+			    $('#container4').highcharts({
+			        chart: {
+			            type: 'pie'
+			        },
+			        title: {
+			            text: 'Browser market share, April, 2011'
+			        },
+			        yAxis: {
+			            title: {
+			                text: 'Total percent market share'
+			            }
+			        },
+			        plotOptions: {
+			            pie: {
+			                shadow: false,
+			                center: ['50%', '50%']
+			            }
+			        },
+			        tooltip: {
+			            valueSuffix: '%'
+			        },
+			        series: [{
+			            name: 'Browsers',
+			            data: browserData,
+			            size: '60%',
+			            dataLabels: {
+			                formatter: function () {
+			                    return this.y > 5 ? this.point.name : null;
+			                },
+			                color: 'white',
+			                distance: -30
+			            }
+			        }, {
+			            name: 'Versions',
+			            data: versionsData,
+			            size: '80%',
+			            innerSize: '60%',
+			            dataLabels: {
+			                formatter: function () {
+			                    // display only if larger than 1
+			                    return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%'  : null;
+			                }
+			            }
+			        }]
+			    });
+			});
+		</script>
+
+
+
+
+			
+			<div id="container" style="width:100%; height:400px;"></div>
+			<!-- <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div> -->
+			<div id="container3" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+			<!-- <div id="container4" style="width: 600px; height: 400px; margin: 0 auto"></div> -->
+			<p> </p>
+			<div id="container0" style="min-width: 100px; height: 200px; margin: 0 auto; border:2px solid red;"></div>
+			<p>  </p> <p> </p>
+			
+
+
+		<a href="../periodico/">  Vuelve a portada</a>
+		</form>
+
+	</body>
+
+</html>

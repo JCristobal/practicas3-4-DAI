@@ -1,0 +1,69 @@
+
+## -*- coding: utf-8 -*-
+	
+
+
+
+<html>
+  <head>
+    <title>Acceso</title>
+	 <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+  </head>
+  
+  <body>
+		<header>
+		
+		<p style="color:red;">
+			% if mensaje:
+			${mensaje}
+			% endif
+		</p>
+		<p>
+		Acceso de usuario:
+		<form name="main" method="post" action="login" style="margin-left:465px">
+			${form.render()}
+		</form>
+		</br>
+		<a href="/registro"> Registro de usuario </a>
+		</br></br>
+		</p>
+	
+
+
+		</header>
+		<section id="izquierda">
+			
+			<section id="secciones">
+				<nav id="menu" >
+				    <ul>
+				        <li><a href="cultura.php" >Cultura</a></li>
+				        <li><a href="deportes.php" >Deportes</a></li>
+				        <li><a href="internacional.php" >Internacional</a></li>
+				        <li><a href="informatica.php" >Inform&aacute;tica</a></li>
+				        <li><a href="etsiit.php" >ETSIIT</a></li>
+				    </ul>
+				</nav>
+			</section> 
+			
+		</section>
+		<section id="centro">
+			<p>Noticias</p>
+
+		</section>
+		<section id="derecha">
+			 <img id="imagen_perro" src = "/static/imagenes/perro.jpg"  alt = "perro" />
+		</section>
+		<footer>
+			
+			<section id="contacto">
+					<p><a href="como_se_hizo.pdf">C&oacute;mo se hizo</a></p>
+					<p>Jos&eacute; Crist&oacute;bal L&oacute;pez Zafra  --- <a href="mailto:cristoballopez@correo.ugr.es">Correo de contacto</a> </br>
+					<address>Calle Mart&iacute;n Bolivar, n&uacute;mero 2, 3B</address></br>         
+					<a href="http://0.0.0.0:8080/cuestionario"> visita mi FORMULARIO</a>
+			</section>  
+		</footer>
+		 <img id="imagen1" src = "/static/imagenes/goku.png"  alt = "Imagen" /> 
+		
+	</body>
+</html>
+
