@@ -25,7 +25,23 @@ y de la práctica 4:
 
 ***
 
-Para usar esta apliacación web usaré el framework web para Python [web.py](http://webpy.org/). Para ello hay que ejecutar en consola `python practica3-4.py` y se podrá ver en http://0.0.0.0:8080/periodico/
+Para usar esta apliacación web usaré el framework web para Python [web.py](http://webpy.org/). 
+
+
+***
+
+Para usar la aplicación, si no tienes intalado web.py, pymongo, mako o tweepy ejecutar:
+
+`sudo easy_install web.py`
+
+`sudo easy_install pymongo`
+
+`pip install Mako`
+
+`pip install tweepy`
+
+
+Para usar la aplicación  hay que ejecutar en consola `python practica3-4.py` y se podrá ver dentro del navegador en http://0.0.0.0:8080/periodico/
 
 ***
 
