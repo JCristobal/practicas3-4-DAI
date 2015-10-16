@@ -20,12 +20,10 @@ y de la práctica 4:
 * Uso e integración de Google Maps
 * Integración sencilla de Twitter
 * Python Twitter: [Tweepy](http://pythonhosted.org/tweepy/html/)
-* "Mashup" (aplicación web híbrida)
+* "Mashup" (aplicación web híbrida, en mi caso Tweeter con geolocalización)
 * Uso de jQuery y AJAX
 
-***
-
-Para usar esta apliacación web usaré el framework web para Python [web.py](http://webpy.org/). 
+* Framework web para Python [web.py](http://webpy.org/). 
 
 
 ***
