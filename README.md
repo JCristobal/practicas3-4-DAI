@@ -30,13 +30,22 @@ y de la práctica 4:
 
 Para usar la aplicación, si no tienes intalado web.py, pymongo, mako o tweepy ejecutar:
 
+`sudo apt-get install python-setuptools`
+
 `sudo easy_install web.py`
 
 `sudo easy_install pymongo`
 
-`pip install Mako`
+`sydo apt-get install python-pip`
 
-`pip install tweepy`
+`sudo pip install Mako`
+
+`sudo pip install tweepy`
+
+`sudo pip install feedparser`
+
+
+Para mongo: instalalo con `sudo apt-get install mongodb`, ejecuta `sudo rm  /var/lib/mongodb/mongod.lock` y `sudo service mongodb restart`
 
 
 Para usar la aplicación  hay que ejecutar en consola `python practica3-4.py` y se podrá ver dentro del navegador en http://0.0.0.0:8080/periodico/
