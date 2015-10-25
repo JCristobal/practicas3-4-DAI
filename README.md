@@ -54,3 +54,5 @@ Para usar la aplicación  hay que ejecutar en consola `python practica3-4.py` y 
 
 Autor:
 J. Cristóbal López Zafra, @JCristobal en GitHub y con correo de contacto tobas92@gmail.com
+
+Licencia: GPLv2
